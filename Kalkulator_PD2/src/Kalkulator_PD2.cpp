@@ -21,7 +21,7 @@ int main() {
 	string smieci;
 
 	do {
-
+		cout << endl;
 		cout << "Proszę wybrac działanie:" << endl;
 		cout << "dodawanie     odejmowanie     mnożenie     dzielenie     koniec" << endl;
 
