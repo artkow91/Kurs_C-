@@ -25,15 +25,17 @@ int main() {
 				<< "dodawanie     odejmowanie     mnożenie     dzielenie     koniec"
 				<< endl;
 
-		cin >> dzialanie;
+		cin >> dzialanie;                                                            //przypisanie wybranego przez uzytkownika dzialania do zmiennej
 
-		if (dzialanie != "koniec") {
+		if (dzialanie != "koniec") {                                                            //sprawdzenie czy użytkownik nie chce zakończyc programu
 			cout
-					<< "Proszę podac dwie liczby, na których zostanie wykonane wybrane działanie."
+					<< "Proszę podac dwie liczby, na których zostanie wykonane wybrane działanie. W celu wpisania liczby z ułamkiem dziesiętnym proszę użyc kropki(.)"
 					<< endl;
+			cin >> liczba1 >> liczba2;
 		}
-		if (dzialanie == "dodawanie") {
 
+		if (dzialanie == "dodawanie") {                                                            //wybór odpowiedniego dzialania
+			cout << "Wynik = " << dodawanie(liczba1, liczba2) << endl;
 		} else if (dzialanie == "odejmowanie") {
 
 		} else if (dzialanie == "mnożenie") {

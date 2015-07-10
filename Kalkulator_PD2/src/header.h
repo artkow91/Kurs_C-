@@ -8,8 +8,6 @@
 #ifndef HEADER_H_
 #define HEADER_H_
 
-
-
-
+float dodawanie(float a, float b);
 
 #endif /* HEADER_H_ */
