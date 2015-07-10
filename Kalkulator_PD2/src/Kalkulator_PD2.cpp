@@ -43,7 +43,8 @@ int main() {
 			cout << "Wynik odejmowania = "
 					<< odejmowanie(tab_zmiennych[0], tab_zmiennych[1]) << endl;
 		} else if (dzialanie == "mnożenie") {
-
+			cout << "Wynik mnożenia = " << mnozenie(tab_zmiennych[0], tab_zmiennych[1])
+					<< endl;
 		} else if (dzialanie == "dzielenie") {
 
 		} else if (dzialanie != "koniec") {
