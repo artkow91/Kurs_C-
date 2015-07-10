@@ -14,6 +14,12 @@ using namespace std;
 
 float dodawanie(float a, float b);
 
+float odejmowanie(float a, float b);
+
+float mnozenie(float a, float b);
+
+float dzielenie(float a, float b);
+
 void przecinki_na_kropki(string &linia);
 
 void rozdzielenie_na_zmienne(string &linia, float tab[]);

@@ -37,7 +37,8 @@ int main() {
 		}
 
 		if (dzialanie == "dodawanie") {                                                            //wybór odpowiedniego dzialania
-			cout << "Wynik = " << dodawanie(tab_zmiennych[0], tab_zmiennych[1]) << endl;
+			cout << "Wynik dodawania = " << dodawanie(tab_zmiennych[0], tab_zmiennych[1])
+					<< endl;
 		} else if (dzialanie == "odejmowanie") {
 
 		} else if (dzialanie == "mnożenie") {
