@@ -46,7 +46,12 @@ int main() {
 			cout << "Wynik mnożenia = " << mnozenie(tab_zmiennych[0], tab_zmiennych[1])
 					<< endl;
 		} else if (dzialanie == "dzielenie") {
-
+			if (tab_zmiennych[1] == 0) {                                                            //sprawdzenie czy użytkownik nie chce dzielic przez zero
+				cout << "Nie można dzielic przez 0 !!!" << endl;
+			} else {
+				cout << "Wynik dzielenia wynosi = "
+						<< dzielenie(tab_zmiennych[0], tab_zmiennych[1]) << endl;
+			}
 		} else if (dzialanie != "koniec") {
 			cout
 					<< "Nie została wybrana żadna opcja (ewentualnie nastąpił błąd w pisowni)."
