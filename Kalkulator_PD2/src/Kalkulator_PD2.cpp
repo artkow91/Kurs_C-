@@ -17,25 +17,39 @@ int main() {
 	float liczba1 = 0;
 	float liczba2 = 0;
 	string dzialanie;
-	cout << "Proszę wybrac działanie:" << endl;
-	cout << "dodawanie     odejmowanie     mnożenie     dzielenie" << endl;
 
-	cin >> dzialanie;
+	do {
 
-	cout << "Proszę podac dwie liczby, na których zostanie wykonane wybrane działanie." << endl;
+		cout << "Proszę wybrac działanie:" << endl;
+		cout
+				<< "dodawanie     odejmowanie     mnożenie     dzielenie     koniec"
+				<< endl;
 
-	if(dzialanie == "dodawanie"){
+		cin >> dzialanie;
 
-	}else if(dzialanie == "odejmowanie"){
+		if (dzialanie != "koniec") {
+			cout
+					<< "Proszę podac dwie liczby, na których zostanie wykonane wybrane działanie."
+					<< endl;
+		}
+		if (dzialanie == "dodawanie") {
 
-	}else if(dzialanie == "mnożenie"){
+		} else if (dzialanie == "odejmowanie") {
 
-	}else if(dzialanie == "dzielenie"){
+		} else if (dzialanie == "mnożenie") {
 
-	}else{
-		cout << "Nie została wybrana żadna opcja (ewentualnie nastąpił błąd w pisowni)." << endl;
-		cout << "Spróbuj jeszcze raz!" << endl;
-	}
+		} else if (dzialanie == "dzielenie") {
+
+		} else if (dzialanie != "koniec") {
+			cout
+					<< "Nie została wybrana żadna opcja (ewentualnie nastąpił błąd w pisowni)."
+					<< endl;
+			cout << "Spróbuj jeszcze raz!" << endl;
+		}
+	} while (dzialanie != "koniec");
+
+	cout << "Do zobaczenia !!!" << endl;
+
 	return 0;
 }
 
