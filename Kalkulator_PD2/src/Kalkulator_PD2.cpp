@@ -40,7 +40,8 @@ int main() {
 			cout << "Wynik dodawania = " << dodawanie(tab_zmiennych[0], tab_zmiennych[1])
 					<< endl;
 		} else if (dzialanie == "odejmowanie") {
-
+			cout << "Wynik odejmowania = "
+					<< odejmowanie(tab_zmiennych[0], tab_zmiennych[1]) << endl;
 		} else if (dzialanie == "mnożenie") {
 
 		} else if (dzialanie == "dzielenie") {
