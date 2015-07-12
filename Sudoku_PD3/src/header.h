@@ -27,7 +27,7 @@ bool sprawdzenie_kolumny(int** tab, int wymiar, int wpisywana_wartosc, int wiers
 bool sprawdzenie_malego_kwadratu(int** tab, int wymiar, int wpisywana_wartosc,
 		int kolumna, int wiersz);
 
-void losowe_zapelnienie(int** tab, int wymiar, int ile_pol);
+void losowe_zapelnienie(int** tab, int wymiar);
 
 void cofnij_o_jeden(int ** tab, int tab_wartosci[][10], int &pomoc, int &wiersz,
 		int &kolumna, int wymiar);

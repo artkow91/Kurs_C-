@@ -22,8 +22,8 @@ int main() {
 
 	cout << "Podaj rozmiar boku planszy." << endl;
 	cin >> wymiar_planszy;
-	ilosc_pustych_pol = wymiar_planszy*wymiar_planszy;
-
+	ilosc_pustych_pol = wymiar_planszy * wymiar_planszy;
+	cout << "Wymiar planszy wynosi: " << wymiar_planszy << "x" << wymiar_planszy << endl;
 
 	int **plansza = new int*[wymiar_planszy];                                                            //tworzenie tablicy dwuwymiarowej o podanej wielkosci
 	for (int i = 0; i < wymiar_planszy; i++) {
@@ -35,18 +35,18 @@ int main() {
 			plansza[i][j] = 0;
 		}
 	}
-	cout << "Czy mam losowo zapelnic planszę? (Tak/Nie)" << endl;                                                            //spytanie sie czy wypelnic losowo plansze
 
+	cout << "Czy mam losowo zapelnic planszę? (Tak/Nie)" << endl;                                                            //spytanie sie czy wypelnic losowo plansze
 	cin >> czy_losowac;
 	if (czy_losowac == "Tak" || czy_losowac == "tak" || czy_losowac == "TAK") {
 		do {
 			cout << "Ile pól mam losowo wypełnic na start ?" << endl;
 			cin >> ile_pol_na_start;
-			ilosc_pustych_pol -= ile_pol_na_start;
-		} while (ilosc_pustych_pol <= 0);
-		losowe_zapelnienie(plansza, wymiar_planszy, ile_pol_na_start);                                                            //losowe zapelnienie calej tablicy
+		} while (ile_pol_na_start > ilosc_pustych_pol);
+		losowe_zapelnienie(plansza, wymiar_planszy);                                                            //losowe zapelnienie calej tablicy
+		ilosc_pustych_pol -= ile_pol_na_start;
 		ile_pol_na_start = ilosc_pustych_pol;
-		while (ile_pol_na_start != 0) {
+		while (ile_pol_na_start != 0) {                                                            //zostawienie tylko tyle zapełnioncyh pol ile chce uzytkownik
 			int rand_kolumna = rand() % wymiar_planszy;
 			int rand_wiersz = rand() % wymiar_planszy;
 			if (plansza[rand_wiersz][rand_kolumna] != 0) {
@@ -61,6 +61,7 @@ int main() {
 	wyswietlenie_planszy(plansza, wymiar_planszy);
 
 	while (ilosc_pustych_pol) {
+
 		cout << "Podaj numer kolumny" << endl;                                                            //Wprowadzenie danych przez uzytkownika
 		cin >> kolumna;
 		kolumna--;
@@ -105,6 +106,8 @@ int main() {
 
 		wyswietlenie_planszy(plansza, wymiar_planszy);
 	}
+	cout << endl;
+	cout << "Wypeniles poprawnie cala planszę. Gratuluje!" << endl;
 
 	return 0;
 }

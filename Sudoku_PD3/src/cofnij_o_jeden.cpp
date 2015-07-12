@@ -9,34 +9,33 @@
 
 void cofnij_o_jeden(int ** tab, int tab_wartosci[][10], int &pomoc, int &wiersz,
 		int &kolumna, int wymiar) {
-
 	for (int i = 0; i < 10; i++) {
-		tab_wartosci[wiersz * 9 + kolumna][i] = 0;
+		tab_wartosci[wiersz * wymiar + kolumna][i] = 0;
 	}
 
 	kolumna--;                                                            //cofamy się w lewo o jedno pole
 
 	if (kolumna < 0) {                                                            // jeśli jesteśmy na lewym krańcu przesówamy się o jeden wiersz do góry
 		wiersz--;                                                            //i przenosimy się na prawy kraniec planszy
-		kolumna = 8;
+		kolumna = (wymiar - 1);
 	}
 
 	int counter = 0;                                                            //zmienna licząca ilosc nieudanych prób znalezienia odpowiedniej wartosci
 
-	while (tab_wartosci[(wiersz * 9) + kolumna][pomoc] != 0) {                                                            //jesli w danym polu tablicy pomocniczej jest jakas wartosc przesun się na kolejne pole
+	while (tab_wartosci[(wiersz * wymiar) + kolumna][pomoc] != 0) {                                                            //jesli w danym polu tablicy pomocniczej jest jakas wartosc przesun się na kolejne pole
 		pomoc++;
 	}
 
-	tab_wartosci[(wiersz * 9) + kolumna][pomoc] = tab[wiersz][kolumna];                                                            //przepisanie wartosci aktualnego pola do pomocniczej tablicy w celu późniejszego sprawdzenia które cyfry były w dane pole wpisywane
+	tab_wartosci[(wiersz * wymiar) + kolumna][pomoc] = tab[wiersz][kolumna];                                                            //przepisanie wartosci aktualnego pola do pomocniczej tablicy w celu późniejszego sprawdzenia które cyfry były w dane pole wpisywane
 	tab[wiersz][kolumna] = 0;                                                            //wyzerowanie danego pola planszy
 
-	int wartosc_pomoc = tab_wartosci[(wiersz * 9) + kolumna][pomoc];
+	int wartosc_pomoc = tab_wartosci[(wiersz * wymiar) + kolumna][pomoc];
 
 	while (1) {
 
 		wartosc_pomoc++;                                                            //zwiększenie poprzedniej wartosci pola o jeden
 		counter++;
-		if (wartosc_pomoc > 9) {
+		if (wartosc_pomoc > wymiar) {
 			wartosc_pomoc = 0;
 		}
 

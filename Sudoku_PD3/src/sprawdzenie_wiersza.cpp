@@ -21,7 +21,7 @@ bool sprawdzenie_wiersza(int tab[][10], int wymiar, int wpisywana_wartosc, int w
 		int kolumna) {                                                            //przeladowanie funkcji aby sprawdzala tablicę czy
 																				  //czy dana wartosc juz nie byla wpisywana w dane pole -- wedlug Backtracking algoritm
 	for (int i = 0; i < wymiar; i++) {
-		if (tab[(wiersz * 9) + kolumna][i] == wpisywana_wartosc) {
+		if (tab[(wiersz * wymiar) + kolumna][i] == wpisywana_wartosc) {
 			return false;
 		}
 	}
