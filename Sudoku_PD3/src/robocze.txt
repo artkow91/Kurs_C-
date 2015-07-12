@@ -1,0 +1,32 @@
+for (int i = 0; i < ile_pol; i++) {
+		int rand_kolumna = rand() % wymiar;
+		int rand_wiersz = rand() % wymiar;
+		int rand_wartosc = (rand() % wymiar) + 1;
+
+		while (1) {
+			if (tab[rand_wiersz][rand_kolumna] == 0) {
+				if (sprawdzenie_wiersza(tab, wymiar, rand_wartosc, wiersz)
+						&& sprawdzenie_kolumny(tab, wymiar, rand_wartosc, kolumna)) {
+					if (wymiar == 9
+							&& sprawdzenie_malego_kwadratu(tab, wymiar, rand_wartosc,
+									kolumna, wiersz)) {
+						break;
+
+					} else {
+						rand_wartosc = (rand() % wymiar) + 1;
+					}
+					cout << i << endl;
+					break;
+
+				} else {
+					rand_wartosc = (rand() % wymiar) + 1;
+					cout << '\t' << i <<'\t'<< rand_wartosc << endl;
+				}
+			}else{
+				rand_kolumna = rand() % wymiar;
+				rand_wiersz = rand() % wymiar;
+			}
+		}
+		tab[rand_wiersz][rand_kolumna] = rand_wartosc;
+//		cout << i << endl;
+	}
