@@ -19,10 +19,10 @@ bool sprawdzenie_wiersza(int** tab, int wymiar, int wpisywana_wartosc, int wiers
 }
 
 
-bool sprawdzenie_wiersza(int tab[][10], int wymiar, int wpisywana_wartosc) {
+bool sprawdzenie_wiersza(int tab[][10], int wymiar, int wpisywana_wartosc, int wiersz, int kolumna) {
 
 	for (int i = 0; i < wymiar; i++) {
-		if (tab[0][i] == wpisywana_wartosc) {
+		if (tab[(wiersz*9)+kolumna][i] == wpisywana_wartosc) {
 			return false;
 		}
 	}

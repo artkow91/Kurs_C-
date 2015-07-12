@@ -41,7 +41,7 @@ int main() {
 		}
 	}
 
-	losowe_zapelnienie(plansza, wymiar_planszy, ile_pol_na_start, wiersz, kolumna);
+	losowe_zapelnienie(plansza, wymiar_planszy, ile_pol_na_start);
 
 	cout << "Plansza zapelniona" << endl;
 	wyswietlenie_planszy(plansza, wymiar_planszy);
