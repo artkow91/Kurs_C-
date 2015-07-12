@@ -9,6 +9,7 @@
 #define HEADER_H_
 
 #include <iostream>
+#include <string>
 #include <cstdlib>
 #include <ctime>
 

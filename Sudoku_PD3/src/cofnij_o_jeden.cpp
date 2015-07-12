@@ -10,8 +10,6 @@
 void cofnij_o_jeden(int ** tab, int tab_wartosci[][10], int &pomoc, int &wiersz,
 		int &kolumna, int wymiar) {
 
-	cout << "Cofam się o jeden" << '\t' << kolumna << '\t' << wiersz << endl;
-
 	for (int i = 0; i < 10; i++) {
 		tab_wartosci[wiersz * 9 + kolumna][i] = 0;
 	}
@@ -50,11 +48,10 @@ void cofnij_o_jeden(int ** tab, int tab_wartosci[][10], int &pomoc, int &wiersz,
 
 			tab[wiersz][kolumna] = wartosc_pomoc;                                                            //jesli spełnia zostaje wpisana do pola planszy
 			pomoc = 0;
-			cout << "WARTOSC POPRAWIONA" << endl;
 
 			break;
-		} else if (counter == 20) {
-			cofnij_o_jeden(tab, tab_wartosci, pomoc, wiersz, kolumna, wymiar);
+		} else if (counter == 11) {                                                            //jeśli po 11 próbach nie udaje się znalezc odpowiedniej wartosci
+			cofnij_o_jeden(tab, tab_wartosci, pomoc, wiersz, kolumna, wymiar);                                                            //zostaje ponownie wywolana funkcja cofnij o jeden
 			break;
 		}
 	}

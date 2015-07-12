@@ -6,7 +6,6 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include <iostream>
 #include "header.h"
 
 using namespace std;
@@ -19,16 +18,12 @@ int main() {
 	int wartosc_pola = 0;
 	int ile_pol_na_start = 0;
 	int ilosc_pustych_pol = 0;
+	string czy_losowac;
 
 	cout << "Podaj rozmiar boku planszy." << endl;
 	cin >> wymiar_planszy;
+	ilosc_pustych_pol = wymiar_planszy*wymiar_planszy;
 
-	do {
-		ilosc_pustych_pol = wymiar_planszy * wymiar_planszy;
-		cout << "Ile pól mam losowo wypełnic na start ?" << endl;
-		cin >> ile_pol_na_start;
-		ilosc_pustych_pol -= ile_pol_na_start;
-	} while (ilosc_pustych_pol <= 0);
 
 	int **plansza = new int*[wymiar_planszy];                                                            //tworzenie tablicy dwuwymiarowej o podanej wielkosci
 	for (int i = 0; i < wymiar_planszy; i++) {
@@ -40,10 +35,29 @@ int main() {
 			plansza[i][j] = 0;
 		}
 	}
+	cout << "Czy mam losowo zapelnic planszę? (Tak/Nie)" << endl;                                                            //spytanie sie czy wypelnic losowo plansze
 
-	losowe_zapelnienie(plansza, wymiar_planszy, ile_pol_na_start);
+	cin >> czy_losowac;
+	if (czy_losowac == "Tak" || czy_losowac == "tak" || czy_losowac == "TAK") {
+		do {
+			cout << "Ile pól mam losowo wypełnic na start ?" << endl;
+			cin >> ile_pol_na_start;
+			ilosc_pustych_pol -= ile_pol_na_start;
+		} while (ilosc_pustych_pol <= 0);
+		losowe_zapelnienie(plansza, wymiar_planszy, ile_pol_na_start);                                                            //losowe zapelnienie calej tablicy
+		ile_pol_na_start = ilosc_pustych_pol;
+		while (ile_pol_na_start != 0) {
+			int rand_kolumna = rand() % wymiar_planszy;
+			int rand_wiersz = rand() % wymiar_planszy;
+			if (plansza[rand_wiersz][rand_kolumna] != 0) {
+				plansza[rand_wiersz][rand_kolumna] = 0;
+				ile_pol_na_start--;
+			}
+		}
 
-	cout << "Plansza zapelniona" << endl;
+		cout << "Plansza wypelniona" << endl;
+	}
+
 	wyswietlenie_planszy(plansza, wymiar_planszy);
 
 	while (ilosc_pustych_pol) {
