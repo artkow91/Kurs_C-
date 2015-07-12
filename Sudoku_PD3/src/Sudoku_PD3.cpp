@@ -17,9 +17,18 @@ int main() {
 	int kolumna = 0;
 	int wiersz = 0;
 	int wartosc_pola = 0;
+	int ile_pol_na_start = 0;
+	int ilosc_pustych_pol = 0;
 
 	cout << "Podaj rozmiar boku planszy." << endl;
 	cin >> wymiar_planszy;
+
+	do {
+		ilosc_pustych_pol = wymiar_planszy * wymiar_planszy;
+		cout << "Ile pól mam losowo wypełnic na start ?" << endl;
+		cin >> ile_pol_na_start;
+		ilosc_pustych_pol -= ile_pol_na_start;
+	} while (ilosc_pustych_pol <= 0);
 
 	int **plansza = new int*[wymiar_planszy];                                                            //tworzenie tablicy dwuwymiarowej o podanej wielkosci
 	for (int i = 0; i < wymiar_planszy; i++) {
@@ -32,7 +41,12 @@ int main() {
 		}
 	}
 
-	while (1) {
+	losowe_zapelnienie(plansza, wymiar_planszy, ile_pol_na_start, wiersz, kolumna);
+
+	cout << "Plansza zapelniona" << endl;
+	wyswietlenie_planszy(plansza, wymiar_planszy);
+
+	while (ilosc_pustych_pol) {
 		cout << "Podaj numer kolumny" << endl;                                                            //Wprowadzenie danych przez uzytkownika
 		cin >> kolumna;
 		kolumna--;
@@ -49,16 +63,19 @@ int main() {
 
 		if (sprawdzenie_wiersza(plansza, wymiar_planszy, wartosc_pola, wiersz)) {                                                            //sprawdzenie czy nie występuje kolflikt w wierszu
 			if (sprawdzenie_kolumny(plansza, wymiar_planszy, wartosc_pola, kolumna)) {                                                            //sprawdzenie czy nie występuje konflikt w kolumnie
-				if (sprawdzenie_malego_kwadratu(plansza, wymiar_planszy, wartosc_pola,
-						kolumna, wiersz) && wymiar_planszy == 9) {                                                            //sprawdzenie czy w malym kwadracie nie wystepuje konflikt - tylko dla planszy 9x9
+				if (wymiar_planszy == 9
+						&& sprawdzenie_malego_kwadratu(plansza, wymiar_planszy,
+								wartosc_pola, kolumna, wiersz)) {                                                            //sprawdzenie czy w malym kwadracie nie wystepuje konflikt - tylko dla planszy 9x9
 					cout << "Nanoszę wartosc na planszę." << endl;
 					plansza[wiersz][kolumna] = wartosc_pola;                                                            //naniesienie wartosci na wyznaczone pole planszy
+					ilosc_pustych_pol--;
 				} else if (wymiar_planszy == 9) {                                                            //jesli w malym kwadracie wystąpi konflikt a plansza ma wymiar 9x9
 					cout << "Cyfra " << wartosc_pola
 							<< " już występuje w małym kwadracie!!!" << endl;
 				} else {
 					cout << "Nanoszę wartosc na planszę." << endl;
 					plansza[wiersz][kolumna] = wartosc_pola;                                                            //naniesienie wartosci na wyznaczone pole planszy
+					ilosc_pustych_pol--;
 
 				}
 			} else {
@@ -72,18 +89,7 @@ int main() {
 
 		cout << '\n' << '\n' << "Wyświetlenie planszy" << '\n' << endl;
 
-		for (int i = 0; i < wymiar_planszy; i++) {                                                            //wyswietlenie planszy
-			for (int j = 0; j < wymiar_planszy; j++) {
-				cout << plansza[i][j] << "  ";
-				if ((j % 3) == 2 && wymiar_planszy == 9) {
-					cout << "  ";
-				}
-			}
-			cout << endl;
-			if ((i % 3) == 2 && wymiar_planszy == 9) {
-				cout << endl;
-			}
-		}
+		wyswietlenie_planszy(plansza, wymiar_planszy);
 	}
 
 	return 0;

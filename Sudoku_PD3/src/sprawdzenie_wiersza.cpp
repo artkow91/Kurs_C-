@@ -18,3 +18,14 @@ bool sprawdzenie_wiersza(int** tab, int wymiar, int wpisywana_wartosc, int wiers
 	return true;
 }
 
+
+bool sprawdzenie_wiersza(int tab[][10], int wymiar, int wpisywana_wartosc) {
+
+	for (int i = 0; i < wymiar; i++) {
+		if (tab[0][i] == wpisywana_wartosc) {
+			return false;
+		}
+	}
+
+	return true;
+}
