@@ -7,7 +7,7 @@
 
 #include "header.h"
 
-void losowe_zapelnienie(int** tab, int wymiar) {
+void losowe_zapelnienie(int** tab, int ** tab_rozw, int wymiar) {
 	srand(time(NULL));
 
 	int tab_wartosci[81][10];                                                            //na każde pole planszy przypada 10 elementowa tablica do przechowywania wartosci które były już wpisywane
@@ -47,6 +47,11 @@ void losowe_zapelnienie(int** tab, int wymiar) {
 				licznik++;
 			}
 
+		}
+	}
+	for (int i = 0; i < wymiar; i++) {                                                            //przekopiowanie zapelnionej planszy, aby zapamiętac rozwiazanie
+		for (int j = 0; j < wymiar; j++) {
+			tab_rozw[i][j] = tab[i][j];
 		}
 	}
 
